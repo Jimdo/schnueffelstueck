@@ -1,0 +1,2 @@
+defmodule Schnueffelstueck do
+end
