@@ -1,6 +1,7 @@
-# Schnueffelstueck
+# Schnüffelstück
+*| < schnueffel > ˈstuːk |* *german* – *snifter valve [noun]*: a valve on a steam engine that allows air in or out.
 
-**TODO: Add description**
+A piece of service that extracts realtime metrics from fastly logs and pushes them into your metrics system
 
 ## Installation
 
