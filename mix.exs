@@ -14,7 +14,10 @@ defmodule Schnueffelstueck.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [
+      mod: { Schnueffelstueck, [] },
+      applications: [:logger, :ranch, :timex]
+    ]
   end
 
   # Dependencies can be Hex packages:
@@ -27,6 +30,10 @@ defmodule Schnueffelstueck.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      { :ranch, "~> 1.2" },
+      { :timex, "~> 2.1" },
+      { :dialyxir, "~> 0.3", only: [:dev]}
+    ]
   end
 end
