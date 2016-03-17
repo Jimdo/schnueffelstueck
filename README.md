@@ -1,7 +1,7 @@
 # Schnüffelstück
 *| < schnueffel > ˈstuːk |* *german* – *snifter valve [noun]*: a valve on a steam engine that allows air in or out.
 
-A piece of service that extracts realtime metrics from fastly logs and pushes them into your metrics system
+A piece of service that extracts realtime metrics from fastly logs and pushes them into your metrics system.
 
 ## Installation
 
@@ -18,3 +18,5 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
         def application do
           [applications: [:schnueffelstueck]]
         end
+
+## Configuration
