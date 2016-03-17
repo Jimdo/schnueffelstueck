@@ -8,14 +8,27 @@ use Mix.Config
 # if you want to provide default values for your application for
 # 3rd-party users, it should be done in your "mix.exs" file.
 
-# You can configure for your application as:
+# The tcp port where the syslog server will listen on.
 #
-#     config :schnueffelstueck, key: :value
+#     config :schnueffelstueck, port: 5555
+config :schnueffelstueck, port: 5000
+
+# Number of acceptor processes, each of them indefinitely accepting connections.
 #
-# And access this configuration in your application as:
+#     config :schnueffelstueck, acceptors: 100
+config :schnueffelstueck, acceptors: 100
+
+# Time the tcp socket will wait for data until it closes the conection.
 #
-#     Application.get_env(:schnueffelstueck, :key)
+#     config :schnueffelstueck, tcp_timeout: 30_000
+config :schnueffelstueck, tcp_timeout: 30_000
+
+# Token configured in the fastly web ui, to skip requests not meant for this
+# schnueffelstueck instance.
 #
+#     config :schnueffelstueck, fastly_token: "testtoken"
+config :schnueffelstueck, fastly_token: "testtoken"
+
 # Or configure a 3rd-party app:
 #
 #     config :logger, level: :info
