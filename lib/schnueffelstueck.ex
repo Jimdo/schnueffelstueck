@@ -11,6 +11,6 @@ defmodule Schnueffelstueck do
 
   def start(_type, _args) do
     :ranch.start_listener(:schnueffelstueck, @acceptors,
-      :ranch_tcp, [{:port, @port}], Schnueffelstueck.Connection, [:binary, packet: :line])
+      :ranch_tcp, [port: @port], Schnueffelstueck.Connection, [])
   end
 end
