@@ -16,6 +16,13 @@ defmodule Schnueffelstueck.Parser.SyslogTest do
     assert first_metric.measure_time == 1457364095
   end
 
+  test "generates the request metric" do
+    metric = Parser.parse(@test_line)
+    |> Enum.find(fn(x) -> x.name == :request end)
+    assert metric.name == :request
+    assert metric.value == 1
+  end
+
   test "generates the status metric" do
     metric = Parser.parse(@test_line)
     |> Enum.find(fn(x) -> x.name == :status end)
