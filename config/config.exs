@@ -23,12 +23,6 @@ config :schnueffelstueck, acceptors: 20
 #     config :schnueffelstueck, tcp_timeout: 30_000
 config :schnueffelstueck, tcp_timeout: 30_000
 
-# Token configured in the fastly web ui, to skip requests not meant for this
-# schnueffelstueck instance.
-#
-#     config :schnueffelstueck, fastly_token: "testtoken"
-config :schnueffelstueck, fastly_token: "testtoken"
-
 # Or configure a 3rd-party app:
 #
 #     config :logger, level: :info

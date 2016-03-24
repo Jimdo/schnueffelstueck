@@ -8,7 +8,6 @@ defmodule Schnueffelstueck.Connection do
   @behaviour :ranch_protocol
 
   @timeout Application.get_env(:schnueffelstueck, :tcp_timeout)
-  @token Application.get_env(:schnueffelstueck, :fastly_token)
 
   @doc """
   Starts the connrction handling process.
@@ -24,23 +23,25 @@ defmodule Schnueffelstueck.Connection do
   Accept the connection and starts the receive loop.
   """
   def init(ref, socket, transport, opts \\ []) do
+    {:ok, reporter} = Keyword.fetch(opts, :reporter)
+    {:ok, token} = Keyword.fetch(opts, :token)
     :ok = :ranch.accept_ack(ref)
-  	loop(socket, transport)
+    loop(socket, transport, token, reporter)
   end
 
-  def loop(socket, transport) do
+  def loop(socket, transport, token, reporter) do
     case transport.recv(socket, 0, @timeout) do
-  		{:ok, << @token <> data >>} ->
-        parse_and_report(data)
-  			loop(socket, transport)
-      {:ok, _} ->
-        loop(socket, transport)
-  		_ ->
-  			:ok = transport.close(socket)
-  	end
+      {:ok, line} ->
+        [_, data] = Regex.run(~r/^#{token}(.*)/, line)
+        parse_and_report(data, reporter)
+      _ ->
+        :ok = transport.close(socket)
+    end
   end
 
-  defp parse_and_report(data) do
-    Task.start(fn -> Syslog.parse(data) |> inspect |> IO.puts end)
+  defp parse_and_report(data, reporter) do
+    Task.start(fn ->
+      Syslog.parse(data) |> reporter.submit(Schnueffelstueck.Reporter)
+    end)
   end
 end
