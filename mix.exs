@@ -16,7 +16,7 @@ defmodule Schnueffelstueck.Mixfile do
   def application do
     [
       mod: { Schnueffelstueck, [] },
-      applications: [:logger, :ranch, :timex]
+      applications: [:logger, :ranch, :timex, :httpotion, :exjsx]
     ]
   end
 
@@ -33,6 +33,8 @@ defmodule Schnueffelstueck.Mixfile do
     [
       { :ranch, "~> 1.2" },
       { :timex, "~> 2.1" },
+      { :httpotion, "~> 2.2" },
+      { :exjsx, "~> 3.2" },
       { :dialyxir, "~> 0.3", only: [:dev]}
     ]
   end
