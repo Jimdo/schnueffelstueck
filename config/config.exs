@@ -16,7 +16,7 @@ config :schnueffelstueck, port: 5000
 # Number of acceptor processes, each of them indefinitely accepting connections.
 #
 #     config :schnueffelstueck, acceptors: 100
-config :schnueffelstueck, acceptors: 100
+config :schnueffelstueck, acceptors: 20
 
 # Time the tcp socket will wait for data until it closes the conection.
 #
