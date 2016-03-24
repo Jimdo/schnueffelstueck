@@ -1,4 +1,4 @@
-# Schnüffelstück
+# Schnüffelstück [![Build Status](https://travis-ci.org/Jimdo/schnueffelstueck.svg?branch=master)](https://travis-ci.org/Jimdo/schnueffelstueck)
 *| < schnueffel > ˈstuːk |* [¹](https://www.youtube.com/watch?v=iTp5wrX1w64) *german* – *snifter valve [noun]*: a valve on a steam engine that allows air in or out.
 
 A piece of software that extracts realtime metrics from fastly logs and pushes them into your metrics system.
