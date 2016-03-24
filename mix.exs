@@ -35,6 +35,7 @@ defmodule Schnueffelstueck.Mixfile do
       { :timex, "~> 2.1" },
       { :httpotion, "~> 2.2" },
       { :exjsx, "~> 3.2" },
+      { :exrm, "~> 0.18" },
       { :dialyxir, "~> 0.3", only: [:dev]}
     ]
   end
