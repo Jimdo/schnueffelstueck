@@ -3,7 +3,7 @@ defmodule Schnueffelstueck.Mixfile do
 
   def project do
     [app: :schnueffelstueck,
-     version: "0.0.2",
+     version: version,
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -38,5 +38,10 @@ defmodule Schnueffelstueck.Mixfile do
       { :exrm, "~> 0.18" },
       { :dialyxir, "~> 0.3", only: [:dev]}
     ]
+  end
+
+  defp version do
+    {:ok, version} = File.read "version"
+    String.strip version
   end
 end
