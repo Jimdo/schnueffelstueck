@@ -65,9 +65,6 @@ defmodule Schnueffelstueck.Reporter.Librato do
     body
   end
 
-  @doc """
-  Sends off the request to the librato api.
-  """
   @spec send_request(String.t, Reporter.config) :: %HTTPotion.Response{}
   defp send_request(body, options) do
     {:ok, user} = Keyword.fetch(options, :user)
