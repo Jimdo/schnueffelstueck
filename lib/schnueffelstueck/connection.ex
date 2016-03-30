@@ -15,13 +15,14 @@ defmodule Schnueffelstueck.Connection do
   Returns `{:ok, pid}`
   """
   def start_link(ref, socket, transport, opts) do
+    config = Schnueffelstueck.Config.services()
     pid = spawn_link(fn ->
 
       # mapping = [
       #   {"token", [{Module, pid}]},
       #   {"token", [{Module, pid}]}
       # ]
-      mapping = Enum.map(opts, fn (reporter_opts) ->
+      mapping = Enum.map(config, fn (reporter_opts) ->
         {:ok, token} = Keyword.fetch(reporter_opts, :token)
         {:ok, reporter_list} = Keyword.fetch(reporter_opts, :reporter)
         {token, Enum.map(reporter_list, fn({module, config}) ->
