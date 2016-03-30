@@ -5,7 +5,7 @@ A piece of software that extracts realtime metrics from fastly logs and pushes t
 
 ## Road to v1
 - [ ] switch config to yaml
-- [ ] add service to reporter mapping in yaml file
+- [x] add service to reporter mapping in yaml file
 - [ ] add installation instructions to the Readme
 
 ## Installation

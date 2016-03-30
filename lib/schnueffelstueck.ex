@@ -20,17 +20,20 @@ defmodule Schnueffelstueck do
       {:service, System.get_env("LIBRATO_PREFIX")}
     ]
 
-    parser_config = [
-      {:reporter, Schnueffelstueck.Reporter.Librato},
-      {:token, System.get_env("FASTLY_TOKEN")}
+    parser_configs = [
+      [
+        {:token, System.get_env("FASTLY_TOKEN")},
+        {:reporter, [
+          {Schnueffelstueck.Reporter.Librato, reporter_config}
+        ]}
+      ],
     ]
 
     children = [
       # Define workers and child supervisors to be supervised
       # worker(Domo.Worker, [arg1, arg2, arg3]),
       :ranch.child_spec(:schnueffelstueck, @acceptors, :ranch_tcp,
-        [port: @port], Schnueffelstueck.Connection, parser_config),
-      worker(Schnueffelstueck.Reporter.Librato, [reporter_config, [name: Schnueffelstueck.Reporter]])
+        [port: @port], Schnueffelstueck.Connection, parser_configs),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
