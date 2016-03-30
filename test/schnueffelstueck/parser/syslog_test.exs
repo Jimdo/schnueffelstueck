@@ -1,5 +1,5 @@
 defmodule Schnueffelstueck.Parser.SyslogTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   doctest Schnueffelstueck.Parser.Syslog
 
   alias Schnueffelstueck.Parser.Syslog, as: Parser

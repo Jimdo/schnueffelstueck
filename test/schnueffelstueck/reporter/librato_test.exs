@@ -1,5 +1,5 @@
 defmodule Schnueffelstueck.Reporter.LibratoTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   doctest Schnueffelstueck.Reporter.Librato, except: [start_link: 2]
 
   alias Schnueffelstueck.Metric

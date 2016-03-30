@@ -1,5 +1,5 @@
 defmodule SchnueffelstueckTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   doctest Schnueffelstueck
 
   @tag skip: "figure out how to handle gen_tcp in tests"
