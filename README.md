@@ -91,3 +91,4 @@ This reporter creates the following set of metrics per request:
 ## Roadmap and Ideas
 - Add prometheus support
 - Report schnüffelstück metrics to a given service
+- Improve deployment
