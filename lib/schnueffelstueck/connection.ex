@@ -41,23 +41,20 @@ defmodule Schnueffelstueck.Connection do
   """
   def init(ref, socket, transport, token_reporter_mapping) do
     :ok = :ranch.accept_ack(ref)
-    loop(socket, transport, "", token_reporter_mapping)
+    transport.setopts(socket, [{:packet, :line}])
+    loop(socket, transport, token_reporter_mapping)
   end
 
-  def loop(socket, transport, buffer, token_reporter_mapping) do
+  def loop(socket, transport, token_reporter_mapping) do
     case transport.recv(socket, 0, @timeout) do
       {:ok, data} ->
-        IO.puts inspect data
-        {rest, lines} = parse_lines(String.split(buffer <> data, <<"\n">>, trim: true), [])
-        Enum.map(lines, fn(line) -> Task.start(__MODULE__, :parse_and_report, [line, token_reporter_mapping]) end)
-        loop(socket, transport, rest, token_reporter_mapping)
+        IO.puts "line: #{inspect data}"
+        Task.start(__MODULE__, :parse_and_report, [data, token_reporter_mapping])
+        loop(socket, transport, token_reporter_mapping)
       _ ->
         :ok = transport.close(socket)
     end
   end
-
-  def parse_lines([rest | []], lines), do: {rest, Enum.reverse(lines)}
-  def parse_lines([line | rest], lines), do: parse_lines(rest, [line | lines])
 
   def parse_and_report(line, mapping) do
     [_, line_token, data] = Regex.run(~r/^(.*)(\<.*)/, line)
