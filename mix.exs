@@ -16,7 +16,7 @@ defmodule Schnueffelstueck.Mixfile do
   def application do
     [
       mod: { Schnueffelstueck, [] },
-      applications: [:logger, :ranch, :timex, :httpotion, :exjsx]
+      applications: [:logger, :ranch, :timex, :httpotion, :exjsx, :yaml_elixir]
     ]
   end
 
@@ -36,6 +36,8 @@ defmodule Schnueffelstueck.Mixfile do
       { :httpotion, "~> 2.2" },
       { :exjsx, "~> 3.2" },
       { :exrm, "~> 0.18" },
+      { :yaml_elixir, "~> 1.0" },
+      { :yamerl, github: "yakaz/yamerl" },
       { :dialyxir, "~> 0.3", only: [:dev]}
     ]
   end

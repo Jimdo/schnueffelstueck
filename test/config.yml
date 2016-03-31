@@ -1,0 +1,17 @@
+---
+services:
+- fastly_service_token: testtoken
+  reporter:
+    - librato:
+        user: bla@jimdo.com
+        token: 12345
+        service: catwalk
+    - prometheus:
+        interval: afsdfdsd
+        note: this is not implemented
+- fastly_service_token: catwalktoken
+  reporter:
+    - librato:
+        user: bla2@jimdo.com
+        token: 6789
+        service: metermacher

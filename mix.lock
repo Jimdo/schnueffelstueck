@@ -20,4 +20,6 @@
   "relx": {:hex, :relx, "3.5.0"},
   "ssl_verify_hostname": {:hex, :ssl_verify_hostname, "1.0.6"},
   "timex": {:hex, :timex, "2.1.1"},
-  "tzdata": {:hex, :tzdata, "0.5.6"}}
+  "tzdata": {:hex, :tzdata, "0.5.6"},
+  "yamerl": {:git, "https://github.com/yakaz/yamerl.git", "ae810a808817d9482b4628ae3e20d746e3729fe0", []},
+  "yaml_elixir": {:hex, :yaml_elixir, "1.0.0"}}
