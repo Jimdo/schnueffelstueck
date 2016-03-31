@@ -1,0 +1,14 @@
+---
+services:
+- fastly_service_token: testtoken
+  reporter:
+    - librato:
+        user: bla@jimdo.com
+        token: 12345
+        service: catwalk
+- fastly_service_token: metertoken
+  reporter:
+    - librato:
+        user: bla@jimdo.com
+        token: 12345
+        service: matermacher

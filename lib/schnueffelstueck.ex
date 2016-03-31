@@ -17,7 +17,7 @@ defmodule Schnueffelstueck do
     children = [
       # Define workers and child supervisors to be supervised
       # worker(Domo.Worker, [arg1, arg2, arg3]),
-      worker(Schnueffelstueck.Config, []),
+      worker(Schnueffelstueck.Config, [Application.get_env(:schnueffelstueck, :initial_config)]),
       :ranch.child_spec(:schnueffelstueck, @acceptors, :ranch_tcp,
         [port: @port], Schnueffelstueck.Connection, []),
     ]
