@@ -3,18 +3,30 @@
 
 A piece of software that extracts realtime metrics from fastly logs and pushes them into your metrics system.
 
-## Road to v1
-- [x] switch config to yaml
-- [x] add service to reporter mapping in yaml file
-- [ ] add installation instructions and "how it works" to the Readme
-
 ## How it works
 
-*tbd*
+Fastly has no way of exporting realtime metrics. But in order to monitor your services monitoring CDN metrics might be helpful. And having your CDN metrics in YOUR metrics system might come handy. Here *Schnüffelstück* comes into play.
+
+Fastly will stream it's real-time logs to the *Schnüffelstück* where it's parsing out a set of different CDN specific metrics and pushes them to all configured metric backends.
+
+*Schnüffelstück* can handle multiple fastly services each reporting to multiple metrics backends.
 
 ## Installation
 
-*tbd*
+1. Install [erlang](https://www.erlang.org/downloads)
+
+2. Magic
+```bash
+mkdir -p ./schnueffelstueck
+wget https://github.com/Jimdo/schnueffelstueck/releases/download/v0.2.2/schnueffelstueck-0.2.2-linux-x64.tar.gz # download
+cd schnueffelstueck/
+tar -xf ../schnueffelstueck-0.1.0-linux-x64.tar.gz # unpack...
+vim schnueffelstueck-config.yml # adjust config to your needs
+bin/schnueffelstueck start # start your schnueffelstueck
+bin/schnueffelstueck ping # check if starting was successful
+```
+
+3. Enjoy your metrics
 
 ## Configuration
 
@@ -75,3 +87,7 @@ This reporter creates the following set of metrics per request:
 - *service*.fastly.status.200
 - *service*.fastly.status.304
 - *service*.fastly.status.400
+
+## Roadmap and Ideas
+- Add prometheus support
+- Report schnüffelstück metrics to a given service
