@@ -18,9 +18,9 @@ Fastly will stream it's real-time logs to the *Schnüffelstück* where it's pars
 2. Magic
 ```bash
 mkdir -p ./schnueffelstueck
-wget https://github.com/Jimdo/schnueffelstueck/releases/download/v0.2.2/schnueffelstueck-0.2.2-linux-x64.tar.gz # download
+wget https://github.com/Jimdo/schnueffelstueck/releases/download/v1.0.0/schnueffelstueck-1.0.0-linux-x64.tar.gz # download
 cd schnueffelstueck/
-tar -xf ../schnueffelstueck-0.1.0-linux-x64.tar.gz # unpack...
+tar -xf ../schnueffelstueck-1.0.0-linux-x64.tar.gz # unpack...
 vim schnueffelstueck-config.yml # adjust config to your needs
 bin/schnueffelstueck start # start your schnueffelstueck
 bin/schnueffelstueck ping # check if starting was successful
