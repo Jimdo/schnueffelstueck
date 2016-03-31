@@ -48,7 +48,6 @@ defmodule Schnueffelstueck.Connection do
   def loop(socket, transport, token_reporter_mapping) do
     case transport.recv(socket, 0, @timeout) do
       {:ok, data} ->
-        IO.puts "line: #{inspect data}"
         Task.start(__MODULE__, :parse_and_report, [data, token_reporter_mapping])
         loop(socket, transport, token_reporter_mapping)
       _ ->
