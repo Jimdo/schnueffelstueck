@@ -1,7 +1,6 @@
 language: elixir
 
 sudo: required
-dist: precise
 
 services:
   - docker
