@@ -92,7 +92,7 @@ defmodule Schnueffelstueck.Reporter.Librato do
   @spec transform(Reporter.metrics, String.t, [map]) :: [map]
   def transform([%Metric{name: :status, value: value, source: source, measure_time: time} | rest], service, metrics) do
     transform(rest, service, [
-      %{"name" => "#{service}.fastly.status.#{value}", "value" => 1, "source" => source, "measure_time" => time} |
+      %{"name" => "#{service}.fastly.status.#{value}", "value" => 1, "source" => parse_source(source), "measure_time" => time} |
       metrics
     ])
   end
@@ -100,7 +100,7 @@ defmodule Schnueffelstueck.Reporter.Librato do
   @spec transform(Reporter.metrics, String.t, [map]) :: [map]
   def transform([%Metric{name: :request, value: value, source: source, measure_time: time} | rest], service, metrics) do
     transform(rest, service, [
-      %{"name" => "#{service}.fastly.requests", "value" => value, "source" => source, "measure_time" => time} |
+      %{"name" => "#{service}.fastly.requests", "value" => value, "source" => parse_source(source), "measure_time" => time} |
       metrics
     ])
   end
@@ -108,7 +108,7 @@ defmodule Schnueffelstueck.Reporter.Librato do
   @spec transform(Reporter.metrics, String.t, [map]) :: [map]
   def transform([%Metric{name: :hit, value: value, source: source, measure_time: time} | rest], service, metrics) do
     transform(rest, service, [
-      %{"name" => "#{service}.fastly.cache_hit.#{value}", "value" => 1, "source" => source, "measure_time" => time} |
+      %{"name" => "#{service}.fastly.cache_hit.#{value}", "value" => 1, "source" => parse_source(source), "measure_time" => time} |
       metrics
     ])
   end
@@ -116,7 +116,7 @@ defmodule Schnueffelstueck.Reporter.Librato do
   @spec transform(Reporter.metrics, String.t, [map]) :: [map]
   def transform([%Metric{name: :method, value: value, source: source, measure_time: time} | rest], service, metrics) do
     transform(rest, service, [
-      %{"name" => "#{service}.fastly.method.#{value}", "value" => 1, "source" => source, "measure_time" => time} |
+      %{"name" => "#{service}.fastly.method.#{value}", "value" => 1, "source" => parse_source(source), "measure_time" => time} |
       metrics
     ])
   end
@@ -124,7 +124,7 @@ defmodule Schnueffelstueck.Reporter.Librato do
   @spec transform(Reporter.metrics, String.t, [map]) :: [map]
   def transform([%Metric{name: :bytes, value: value, source: source, measure_time: time} | rest], service, metrics) do
     transform(rest, service, [
-      %{"name" => "#{service}.fastly.bytes", "value" => Integer.parse(value) |> elem(0), "source" => source, "measure_time" => time} |
+      %{"name" => "#{service}.fastly.bytes", "value" => Integer.parse(value) |> elem(0), "source" => parse_source(source), "measure_time" => time} |
       metrics
     ])
   end
@@ -132,7 +132,7 @@ defmodule Schnueffelstueck.Reporter.Librato do
   @spec transform(Reporter.metrics, String.t, [map]) :: [map]
   def transform([%Metric{name: :latency, value: value, source: source, measure_time: time} | rest], service, metrics) do
     transform(rest, service, [
-      %{"name" => "#{service}.fastly.origin_latency", "value" => Integer.parse(value) |> elem(0), "source" => source, "measure_time" => time} |
+      %{"name" => "#{service}.fastly.origin_latency", "value" => Integer.parse(value) |> elem(0), "source" => parse_source(source), "measure_time" => time} |
       metrics
     ])
   end
@@ -141,4 +141,9 @@ defmodule Schnueffelstueck.Reporter.Librato do
   def transform([%Metric{name: :num_hits} | rest], service, metrics), do: transform(rest, service, metrics)
   @spec transform(Reporter.metrics, String.t, [map]) :: [map]
   def transform([%Metric{name: :lastuse} | rest], service, metrics), do: transform(rest, service, metrics)
+
+  defp parse_source(source) do
+    [ source ] = Regex.run(~r/\D*/, source)
+    source
+  end
 end
