@@ -6,7 +6,7 @@ services:
   - docker
 
 elixir:
-  - 1.2.3
+  - 1.2.2
 otp_release:
   - 18.2.1
 
