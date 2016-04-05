@@ -1,7 +1,6 @@
 language: elixir
 
 sudo: required
-dist: trusty
 
 services:
   - docker
@@ -9,13 +8,13 @@ services:
 elixir:
   - 1.2.3
 otp_release:
-  - 18.2.1
+  - 18
 
 before_deploy:
   - MIX_ENV=prod mix release
   - cp rel/schnueffelstueck/releases/$(cat version)/schnueffelstueck.tar.gz schnueffelstueck-$(cat version)-linux-x64.tar.gz
-  - docker run --rm -v $PWD:$PWD -w $PWD -e "MIX_ENV=prod" msaraiva/elixir-dev sh -c "mix hex.info && mix release"
-  - cp rel/schnueffelstueck/releases/$(cat version)/schnueffelstueck.tar.gz schnueffelstueck-$(cat version)-alpine-x64.tar.gz
+  # - docker run --rm -v $PWD:$PWD -w $PWD -e "MIX_ENV=prod" msaraiva/elixir-dev sh -c "mix hex.info && mix release"
+  # - cp rel/schnueffelstueck/releases/$(cat version)/schnueffelstueck.tar.gz schnueffelstueck-$(cat version)-alpine-x64.tar.gz
 
 deploy:
   provider: releases
