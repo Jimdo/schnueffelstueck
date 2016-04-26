@@ -67,7 +67,7 @@ defmodule Schnueffelstueck.Reporter.LibratoTest do
   end
 
   test "transform the `bytes` metric" do
-    metric = %Metric{measure_time: 1457364121, name: :bytes, source: "cache-lhr6325", value: "73080"}
+    metric = %Metric{measure_time: 1457364121, name: :bytes, source: "cache-lhr6325", value: 73080}
     assert Librato.transform([metric], "servicename", []) == [
       %{"measure_time" => 1457364121, "name" => "servicename.fastly.bytes", "source" => "cache-lhr", "value" => 73080}
     ]
@@ -84,9 +84,9 @@ defmodule Schnueffelstueck.Reporter.LibratoTest do
   end
 
   test "transform the `latency` metric" do
-    metric = %Metric{measure_time: 1457364121, name: :latency, source: "cache-lhr6325", value: "0.000"}
+    metric = %Metric{measure_time: 1457364121, name: :latency, source: "cache-lhr6325", value: 0.001}
     assert Librato.transform([metric], "servicename", []) == [
-      %{"measure_time" => 1457364121, "name" => "servicename.fastly.origin_latency", "source" => "cache-lhr", "value" => 0}
+      %{"measure_time" => 1457364121, "name" => "servicename.fastly.origin_latency", "source" => "cache-lhr", "value" => 0.001}
     ]
   end
 end
