@@ -31,20 +31,20 @@ defmodule Schnueffelstueck.ConnectionTest do
         %Schnueffelstueck.Metric{measure_time: 1459249861, name: :status, source: "cache-lhr6325", value: "200"},
         %Schnueffelstueck.Metric{measure_time: 1459249861, name: :hit, source: "cache-lhr6325", value: "HIT"},
         %Schnueffelstueck.Metric{measure_time: 1459249861, name: :method, source: "cache-lhr6325", value: "GET"},
-        %Schnueffelstueck.Metric{measure_time: 1459249861, name: :bytes, source: "cache-lhr6325", value: "73080"},
-        %Schnueffelstueck.Metric{measure_time: 1459249861, name: :num_hits, source: "cache-lhr6325", value: "3"},
-        %Schnueffelstueck.Metric{measure_time: 1459249861, name: :lastuse, source: "cache-lhr6325", value: "29.309"},
-        %Schnueffelstueck.Metric{measure_time: 1459249861, name: :latency, source: "cache-lhr6325", value: "0.000"}
+        %Schnueffelstueck.Metric{measure_time: 1459249861, name: :bytes, source: "cache-lhr6325", value: 73080},
+        %Schnueffelstueck.Metric{measure_time: 1459249861, name: :num_hits, source: "cache-lhr6325", value: 3},
+        %Schnueffelstueck.Metric{measure_time: 1459249861, name: :lastuse, source: "cache-lhr6325", value: 29.309},
+        %Schnueffelstueck.Metric{measure_time: 1459249861, name: :latency, source: "cache-lhr6325", value: 0.000}
       ], :pid1},
       {:submitted, [
         %Schnueffelstueck.Metric{measure_time: 1459249861, name: :request, source: "cache-lhr6325", value: 1},
         %Schnueffelstueck.Metric{measure_time: 1459249861, name: :status, source: "cache-lhr6325", value: "200"},
         %Schnueffelstueck.Metric{measure_time: 1459249861, name: :hit, source: "cache-lhr6325", value: "HIT"},
         %Schnueffelstueck.Metric{measure_time: 1459249861, name: :method, source: "cache-lhr6325", value: "GET"},
-        %Schnueffelstueck.Metric{measure_time: 1459249861, name: :bytes, source: "cache-lhr6325", value: "73080"},
-        %Schnueffelstueck.Metric{measure_time: 1459249861, name: :num_hits, source: "cache-lhr6325", value: "3"},
-        %Schnueffelstueck.Metric{measure_time: 1459249861, name: :lastuse, source: "cache-lhr6325", value: "29.309"},
-        %Schnueffelstueck.Metric{measure_time: 1459249861, name: :latency, source: "cache-lhr6325", value: "0.000"}
+        %Schnueffelstueck.Metric{measure_time: 1459249861, name: :bytes, source: "cache-lhr6325", value: 73080},
+        %Schnueffelstueck.Metric{measure_time: 1459249861, name: :num_hits, source: "cache-lhr6325", value: 3},
+        %Schnueffelstueck.Metric{measure_time: 1459249861, name: :lastuse, source: "cache-lhr6325", value: 29.309},
+        %Schnueffelstueck.Metric{measure_time: 1459249861, name: :latency, source: "cache-lhr6325", value: 0.000}
       ], :pid2}]
   end
 end

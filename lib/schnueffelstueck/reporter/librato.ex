@@ -124,7 +124,7 @@ defmodule Schnueffelstueck.Reporter.Librato do
   @spec transform(Reporter.metrics, String.t, [map]) :: [map]
   def transform([%Metric{name: :bytes, value: value, source: source, measure_time: time} | rest], service, metrics) do
     transform(rest, service, [
-      %{"name" => "#{service}.fastly.bytes", "value" => Integer.parse(value) |> elem(0), "source" => parse_source(source), "measure_time" => time} |
+      %{"name" => "#{service}.fastly.bytes", "value" => value, "source" => parse_source(source), "measure_time" => time} |
       metrics
     ])
   end
@@ -132,7 +132,7 @@ defmodule Schnueffelstueck.Reporter.Librato do
   @spec transform(Reporter.metrics, String.t, [map]) :: [map]
   def transform([%Metric{name: :latency, value: value, source: source, measure_time: time} | rest], service, metrics) do
     transform(rest, service, [
-      %{"name" => "#{service}.fastly.origin_latency", "value" => Integer.parse(value) |> elem(0), "source" => parse_source(source), "measure_time" => time} |
+      %{"name" => "#{service}.fastly.origin_latency", "value" => value, "source" => parse_source(source), "measure_time" => time} |
       metrics
     ])
   end
