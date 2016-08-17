@@ -60,14 +60,14 @@ defmodule Schnueffelstueck.Parser.Syslog do
 
   defp parse_int(number) when is_binary(number) do
     case Integer.parse(number) do
-      {i, rest} -> i
+      {i, _rest} -> i
       :error -> nil
     end
   end
 
   defp parse_float(number) when is_binary(number) do
     case Float.parse(number) do
-      {i, rest} -> i
+      {i, _rest} -> i
       :error -> nil
     end
   end

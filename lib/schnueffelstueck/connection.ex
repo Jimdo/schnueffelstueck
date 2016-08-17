@@ -14,7 +14,7 @@ defmodule Schnueffelstueck.Connection do
 
   Returns `{:ok, pid}`
   """
-  def start_link(ref, socket, transport, opts) do
+  def start_link(ref, socket, transport, _opts) do
     config = Schnueffelstueck.Config.services()
     pid = spawn_link(fn ->
 
