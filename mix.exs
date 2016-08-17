@@ -16,7 +16,7 @@ defmodule Schnueffelstueck.Mixfile do
   def application do
     [
       mod: { Schnueffelstueck, [] },
-      applications: [:logger, :ranch, :timex, :httpotion, :exjsx, :yaml_elixir]
+      applications: [:logger, :ranch, :timex, :httpotion, :exjsx, :yaml_elixir, :dialyxir]
     ]
   end
 
