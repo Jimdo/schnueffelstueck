@@ -32,10 +32,10 @@ defmodule Schnueffelstueck.Mixfile do
   defp deps do
     [
       { :ranch, "~> 1.2" },
-      { :timex, "~> 2.1" },
-      { :httpotion, "~> 2.2" },
+      { :timex, "~> 3.0" },
+      { :httpotion, "~> 3.0" },
       { :exjsx, "~> 3.2" },
-      { :exrm, "~> 0.18" },
+      { :exrm, "~> 1.0" },
       { :yaml_elixir, "~> 1.0" },
       { :yamerl, github: "yakaz/yamerl" },
       { :dialyxir, "~> 0.3", only: [:dev]}
