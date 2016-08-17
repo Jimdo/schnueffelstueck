@@ -38,7 +38,7 @@ defmodule Schnueffelstueck.Mixfile do
       { :exrm, "~> 1.0" },
       { :yaml_elixir, "~> 1.0" },
       { :yamerl, github: "yakaz/yamerl" },
-      { :dialyxir, "~> 0.3", only: [:dev]}
+      { :dialyxir, "~> 0.3" }
     ]
   end
 
