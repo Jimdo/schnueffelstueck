@@ -27,6 +27,12 @@ defmodule Schnueffelstueck.Reporter.Librato do
     GenServer.start_link(__MODULE__, config, gen_server_options)
   end
 
+  def init(args) do
+    # Prevent process leackage, when the paret process dies, the reporter should also die
+    Process.flag(:trap_exit, true)
+    {:ok, args}
+  end
+
   @doc """
   Reports a list of metrics to Librato.
 
